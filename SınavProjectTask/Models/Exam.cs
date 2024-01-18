@@ -1,11 +1,10 @@
 ﻿namespace SınavProjectTask.Models;
 
-public class Exam
+public class Exam : BaseEntity
 {
-    public Guid Id { get; set; }
     public string ExamName { get; set; }
     public string Description { get; set; }
-    public TimeOnly ExamTime { get; set; } //it will be represented as minutes
+    public int MaximumTime { get; set; } //it will be represented as minutes
     public Guid CategoryId { get; set; }
     
     public virtual Category Category { get; set; }

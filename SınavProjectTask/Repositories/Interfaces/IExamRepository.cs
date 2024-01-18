@@ -1,6 +1,7 @@
-﻿namespace SınavProjectTask.Repositories.Interfaces
+﻿using SınavProjectTask.Models;
+
+namespace SınavProjectTask.Repositories.Interfaces;
+
+public interface IExamRepository : IGenericRepository<Exam>
 {
-    public class IExamRepository
-    {
-    }
 }

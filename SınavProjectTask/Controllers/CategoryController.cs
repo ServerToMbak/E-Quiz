@@ -41,6 +41,7 @@ namespace SınavProjectTask.Controllers
                 };
 
                 await _categoryRepository.Add(category);
+                return RedirectToAction("Index");
             }
             else
             {
