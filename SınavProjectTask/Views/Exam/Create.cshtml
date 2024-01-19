@@ -1,4 +1,4 @@
-﻿@model CreateExanViewModel
+﻿@model CreateExamViewModel
 @* 
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -24,7 +24,6 @@
                     <div class="row justify-content-center">
                         <div class="col-6 col-lg-5">
                             <form method="post" asp-action="Create" enctype="multipart/form-data">
-                                <input type="hidden" id="AppUserId" name="AppUserId" asp-for="CategoryId" />
 
                                 <div class="form-row form-group">
                                     <div class="col mb-2">
@@ -42,9 +41,38 @@
 
                                 <div class="form-row mb-2 form-group">
                                     <div class="col">
+                                        <input asp-for="SuccessPoint" class="form-control form-control-lg" placeholder="Min. Success Point" />
+                                        <span asp-validation-for="SuccessPoint" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-row mb-2 form-group">
+                                    <div class="col">
                                         <!-- Changed input to textarea for Description -->
                                         <textarea asp-for="Description" class="form-control form-control-lg" placeholder="Description"></textarea>
                                         <span asp-validation-for="Description" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-row mb-2 form-group">
+                                    <div class="col">
+                                        <select  class="form-select" asp-for="CategoryId">
+                                            <option value="none" selected>Chose exam category</option>
+                                            @foreach(var item in Model.Categories)
+                                            {
+                                                <option  value="@item.Id">@item.CategoryName </option>
+                                            }
+                                        </select>
+                                        <span asp-validation-for="CategoryId" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-row form-group mt-3 float-none">
+                                    <div class="col">
+                                        <button class="btn btn-block btn-success btn-lg" type="submit">Create</button>
                                     </div>
                                 </div>
                             </form>

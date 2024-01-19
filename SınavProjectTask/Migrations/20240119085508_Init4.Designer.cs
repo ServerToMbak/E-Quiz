@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SınavProjectTask.Data;
 
@@ -11,9 +12,11 @@ using SınavProjectTask.Data;
 namespace SınavProjectTask.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240119085508_Init4")]
+    partial class Init4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -72,7 +75,7 @@ namespace SınavProjectTask.Migrations
                     b.Property<int>("MaximumTime")
                         .HasColumnType("int");
 
-                    b.Property<int>("SuccessPoint")
+                    b.Property<int>("SuccessPoing")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
