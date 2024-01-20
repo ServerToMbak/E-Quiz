@@ -68,10 +68,35 @@ namespace SınavProjectTask.Controllers
             }
             else
             {
-                examVM.Categories =await _categoryRepository.GetAll();
+                return View("Create");
             }
 
             return View(examVM);
+        }
+
+        [HttpGet("getbyid")]
+        public async Task<IActionResult> GetExam(int id)
+        {
+            var exam = await _examRepository.GetById(id);
+            return View(exam);
+        }
+
+        [HttpPost("update")]
+        public async Task<IActionResult> Update(int id)
+        {
+            var exam = await _examRepository.GetById(id);
+            if (exam == null)
+                return View("Error");
+
+            var examVM = new ExamViewModel
+            {
+                Description = exam.Description,
+                ExamName = exam.ExamName,
+                MaximumTime = exam.MaximumTime,
+                SuccessPoint = exam.SuccessPoint,
+            };
+
+            return View(exam);
         }
     }
 }
