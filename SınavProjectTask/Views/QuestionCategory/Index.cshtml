@@ -10,14 +10,22 @@
 
 <div class="container">
     <div class="float-end">
-        <a href="Create" class="btn btn-outline-info">Create Question Category</a>
+        <a href="/QuestionCategory/Create" class="btn btn-outline-info">Create Question Category</a>
     </div>
     <div class="row">
-        <div class="col-md-7">
+        <div class="col-md-8">
             @foreach(var item in Model.QuestionCategories)
             {
-                <div class="card">
-                    <div class="card-text">@item.Name</div>
+                <div class="card mb-3">
+                    <div class="card-header">Category </div>
+                    <div class="card-body">Name: @item.Name</div>
+                    <div  class="card-footer">
+                        <div class="float-end">
+                            <a class="p-3"  href="Question/Create">Add question</a>
+                            <a  href="Question/Create">see detail</a>
+                        </div>
+                      
+                    </div> 
                 </div>
             }
         </div>

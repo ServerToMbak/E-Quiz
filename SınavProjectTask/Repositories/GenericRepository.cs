@@ -42,7 +42,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
        return await this.entity.ToListAsync();
     }
 
-    public virtual async Task<T> GetById(int id)
+    public virtual async Task<T> GetById(Guid id)
     {
         return await this.entity.FindAsync(id);
     }

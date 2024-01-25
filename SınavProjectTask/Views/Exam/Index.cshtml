@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <div class="mt-3 float-end">
+            <div class="mt-3 mb-3 float-end">
         
                 <a href="Exam/Create" class="btn btn-block btn-outline-primary btn-lg px-3" type="submit">Add Exam</a>
             </div>
@@ -17,21 +17,21 @@
     {
         <h3>You have no exams you can click button to add bew exam</h3>
     }
-    
-    @foreach(var item in Model.Exams)
-    {
+    <div class="row">
+        @foreach(var item in Model.Exams)
+        {
 
-        <div class="card mb-5" style="width: 18rem;">
-          <div class="card-body">
-                <h5 class="card-title">Exam Name: @item.ExamName</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Exam takes: @item.MaximumTime minutes</h6>
-                <p class="card-text">@item.Description</p>
-                <a class="card-link">Min. Success Point is: @item.SuccessPoint</a>
-            <a href="#" class="card-link">See Detail</a>
-          </div>
-        </div>
-    }
-
+            <div class="card mb-5 mx-2" style="width: 18rem;">
+              <div class="card-body">
+                    <h5 class="card-title">Exam Name: @item.ExamName</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Exam takes: @item.MaximumTime minutes</h6>
+                    <p class="card-text">@item.Description</p>
+                    <span class="card-link">Success Point is: @item.SuccessPoint</span>
+                <a href="#" class="card-link">Details</a>
+              </div>
+            </div>
+        }
+    </div>
     <div class="text-start text-info">
 
         <h4>You have @Model.Count exam on the system </h4>

@@ -16,6 +16,7 @@ builder.Services.AddScoped<IQuestionRepository, QuestionRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IQuestionCategoryRepository, QuestionCategoryRepository>();
 builder.Services.AddScoped<IExamRepository, ExamRepository>();
+builder.Services.AddScoped<IOptionRepository, OptionRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

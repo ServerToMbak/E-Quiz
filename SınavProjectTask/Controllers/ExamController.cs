@@ -42,6 +42,7 @@ namespace SınavProjectTask.Controllers
         public async Task<IActionResult> Create() 
         {
             var examVM = new CreateExamViewModel();
+
             examVM.Categories = await _categoryRepository.GetAll();
             return View(examVM);
         }
@@ -50,39 +51,39 @@ namespace SınavProjectTask.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateExamViewModel examVM)
         {
-            if(ModelState.IsValid)
-            {
-                var exam = new Exam
-                {
-                    ExamName = examVM.ExamName,
-                    CategoryId = examVM.CategoryId,
-                    Description = examVM.Description,
-                    MaximumTime = examVM.MaximumTime,
-                    SuccessPoint = examVM.SuccessPoint,
-                    
-                };
 
-                await _examRepository.Add(exam);
+            examVM.Categories = await _categoryRepository.GetAll();
 
-                return RedirectToAction("Index");
-            }
-            else
+            if (!ModelState.IsValid)
             {
-                return View("Create");
+               
+                return View(examVM);
             }
 
-            return View(examVM);
+            var exam = new Exam
+            {
+                ExamName = examVM.ExamName,
+                CategoryId = examVM.CategoryId,
+                Description = examVM.Description,
+                MaximumTime = examVM.MaximumTime,
+                SuccessPoint = examVM.SuccessPoint,
+            };
+
+            await _examRepository.Add(exam);
+
+            return RedirectToAction("Index");
+
         }
 
-        [HttpGet("getbyid")]
-        public async Task<IActionResult> GetExam(int id)
-        {
-            var exam = await _examRepository.GetById(id);
-            return View(exam);
-        }
+        //[HttpGet("getbyid")]
+        //public async Task<IActionResult> GetExam(int id)
+        //{
+        //    var exam = await _examRepository.GetById(id);
+        //    return View(exam);
+        //}
 
         [HttpPost("update")]
-        public async Task<IActionResult> Update(int id)
+        public async Task<IActionResult> Update(Guid id)
         {
             var exam = await _examRepository.GetById(id);
             if (exam == null)
